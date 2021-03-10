@@ -5,7 +5,7 @@ import Section from './section'
 
 const NorthSeason = () => {
   return <Section
-    href="/"
+    href="https://qw-kappa.vercel.app"
     image="https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     name="North Season"
     tech="Elamusmatkad maagilisel Lapimaal. Puhka aktiivselt nii suvel kui ka lumisel talvel Põhja-Soomes."
