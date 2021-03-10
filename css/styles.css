@@ -160,7 +160,7 @@ nav a {
 @media (max-width: 768px) {
   .hero {
     margin-top: 0;
-    padding: 25px 0;
+    padding: 0 0 25px 0;
   }
 
   .hero_call_to_action {
@@ -281,10 +281,6 @@ nav a {
   .section_icons {
     margin-bottom: 15px;
     flex-wrap: wrap;
-  }
-
-  .section_main_odd {
-    flex-direction: column-reverse;
   }
 
   .section_call_to_action {
@@ -444,16 +440,16 @@ nav a {
     padding: 10px 35px;
   }
 
-  footer {
+  .contact footer {
     flex-direction: column-reverse;
     padding-bottom: 125px;
   }
 
-  footer a {
+  .contact footer a {
     font-size: 1.5rem;
   }
 
-  footer p {
+  .contact footer p {
     margin-top: 15px;
     font-size: .7rem;
   }
