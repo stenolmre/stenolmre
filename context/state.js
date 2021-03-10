@@ -1,7 +1,8 @@
 import React from 'react'
+import ContactProvider from './contact'
 
-const GlobalState = ({ children }) => <div>
+const GlobalState = ({ children }) => <ContactProvider>
   { children }
-</div>
+</ContactProvider>
 
 export default GlobalState

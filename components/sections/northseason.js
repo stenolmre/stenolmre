@@ -1,24 +1,23 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'next/link'
 
+import Section from './section'
+
 const NorthSeason = () => {
-  return <div className="section_odd section">
-    <Link href="/"><a className="section_main section_main_odd">
-      <div className="section_content">
-        <h2>North Season</h2>
-        <p>A web application to help developers and programmers build beautifully designed portfolios in minutes</p>
-        <h4>Technology</h4>
-        <p>Mydevportfol.io is built using Angular2+, with a node backend for handling API requests, and runs on Heroku. Payments are handled via Stripe, Firebase provides the database solution and Bootstrap3 is the CSS framework of choice for this project</p>
-      </div>
-      <img src="https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="illustration" />
-    </a></Link>
-    <div className="section_icons">
-      <img src="Nextjs-logo.png" alt="nextjs"/>
-      <img src="react-js.png" alt="reactjs"/>
-      <img src="MongoDB-Logo.png" alt="mongodb"/>
-    </div>
-    <a className="section_call_to_action" href="https://next-etreeningud.vercel.app">Hire me</a>
-  </div>
+  return <Section
+    href="/"
+    image="https://images.pexels.com/photos/326503/pexels-photo-326503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    name="North Season"
+    tech="Elamusmatkad maagilisel Lapimaal. Puhka aktiivselt nii suvel kui ka lumisel talvel Põhja-Soomes."
+    excerpt="Elamusmatkad maagilisel Lapimaal. Puhka aktiivselt nii suvel kui ka lumisel talvel Põhja-Soomes." tech="North Season veebileht matkajale on ehitatud reactjs'iga, kus API kutsung on tehtud serveri vabale nextjs raamile. Nextjs hoolitseb ka samuti domeeni eest, mille abil on veebileht kenasti nähtav. Andmete haldamiseks on kasutatud MongoDB süsteemi ning CSS3 hoolitseb väljanägemise eest. Makselahenduseks on kasutatud Stripe võimalusi."
+    images={
+      <Fragment>
+        <img src="Nextjs-logo.png" alt="nextjs"/>
+        <img src="react-js.png" alt="reactjs"/>
+        <img src="MongoDB-Logo.png" alt="mongodb"/>
+        <img src="stripe_logo.png" alt="stripe"/>
+      </Fragment>
+    }/>
 }
 
 export default NorthSeason

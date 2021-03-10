@@ -13,15 +13,15 @@ import Footbar from '@/components/footbar'
 
 const Index = () => <Fragment>
   <Head title="Sten Olmre - Software developer"/>
-  <MobileNavbar />
-  <Hero />
-  <Etreeningud />
-  <NorthSeason />
-  <DemoPood />
-  <Tools />
-  <Frameworks />
-  <Contact />
-  <Footbar />
+  <MobileNavbar/>
+  <Hero/>
+  <Etreeningud/>
+  <DemoPood/>
+  <NorthSeason/>
+  <Tools/>
+  <Frameworks/>
+  <Contact/>
+  <Footbar/>
 </Fragment>
 
 export default Index

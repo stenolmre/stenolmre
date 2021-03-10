@@ -2,7 +2,7 @@ import React from 'react'
 
 const Tools = () => {
   return <div className="tools" id="skills">
-    <h2>Tools I use</h2>
+    <h2>Ma kasutan</h2>
     <div>
       <img src="logo-figma.png" alt="figma"/>
       <img src="atom_logo.png" alt="atom"/>

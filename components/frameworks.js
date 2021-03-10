@@ -2,7 +2,7 @@ import React from 'react'
 
 const Frameworks = () => {
   return <div className="frameworks">
-    <h2>Frameworks I know</h2>
+    <h2>Tunnen end mugavalt</h2>
     <div>
       <img src="Nextjs-logo.png" alt="nextjs"/>
       <img src="react-js.png" alt="reactjs"/>

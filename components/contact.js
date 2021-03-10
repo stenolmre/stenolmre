@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+
 import validateEmail from './../utils/validateemail'
 
+import { useContactDispatch } from './../context/contact'
+import { sendMessage } from '@/actions/contact'
+
 const Contact = () => {
+  const dispatchContact = useContactDispatch()
+
   const [data, setData] = useState({ email: '', message: '' })
   const { email, message } = data
   const [success, setSuccess] = useState(false)
@@ -10,7 +16,7 @@ const Contact = () => {
 
   const onChange = e => setData({ ...data, [e.target.name]: e.target.value })
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault()
     setProcessing(true)
 
@@ -32,10 +38,9 @@ const Contact = () => {
       return
     }
 
-    console.log(data)
-    setError({ error: false, email_msg: '', message_msg: '', overall_msg: '' })
+    await sendMessage(dispatchContact, data, () => setSuccess(true), () => setError({ error: false, email_msg: '', message_msg: '', overall_msg: '' }))
+
     setProcessing(false)
-    setSuccess(true)
     setData({ email: '', message: '' })
 
     setTimeout(() => {
@@ -44,7 +49,7 @@ const Contact = () => {
   }
 
   return <div className="contact" id="contact">
-    <h2>I'm available for work, <br/>get in touch.</h2>
+    <h2>Võta minuga ühendust</h2>
     <div>
       <a href="mailto:stenolmre@icloud.com" target="_blank" rel="noopener noreferrer">stenolmre@icloud.com</a>
     </div>

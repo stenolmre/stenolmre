@@ -200,6 +200,10 @@ nav a {
   margin-right: 50px;
 }
 
+.section_main_odd {
+  flex-direction: row-reverse;
+}
+
 .section_odd .section_main img {
   margin-left: 50px;
 }
@@ -398,7 +402,7 @@ nav a {
   font-size: .75rem;
 }
 
-footer {
+.contact footer {
   width: 80%;
   padding: 25px 10%;
   position: absolute;
@@ -408,8 +412,11 @@ footer {
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--graysmoke);
-  font-size: .7rem;
   color: rgba(33, 33, 33, .4);
+}
+
+.contact footer p {
+  font-size: .7rem;
 }
 
 .contact footer a {

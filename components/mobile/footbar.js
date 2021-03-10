@@ -9,11 +9,11 @@ const Footbar = () => {
     </a></Link>
     <Link href="/#portfolio"><a>
       <i className="fas fa-atom"/>
-      <p>Portfolio</p>
+      <p>Portfoolio</p>
     </a></Link>
     <Link href="/#skills"><a>
       <i className="fas fa-tools"/>
-      <p>Skills</p>
+      <p>Oskused</p>
     </a></Link>
     <Link href="/#contact"><a>
       <i className="fas fa-phone"/>
