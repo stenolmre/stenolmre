@@ -3,9 +3,7 @@ import Head from '@/utils/head'
 
 import MobileNavbar from '@/components/mobilenavbar'
 import Hero from '@/components/hero'
-import Etreeningud from '@/components/sections/etreeningud'
-import NorthSeason from '@/components/sections/northseason'
-import DemoPood from '@/components/sections/demopood'
+import Sections from '@/components/section'
 import Tools from '@/components/tools'
 import Frameworks from '@/components/frameworks'
 import Contact from '@/components/contact'
@@ -15,9 +13,7 @@ const Index = () => <Fragment>
   <Head title="Sten Olmre - Software developer"/>
   <MobileNavbar/>
   <Hero/>
-  <Etreeningud/>
-  <DemoPood/>
-  <NorthSeason/>
+  <Sections/>
   <Tools/>
   <Frameworks/>
   <Contact/>

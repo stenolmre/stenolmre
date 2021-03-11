@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import validateEmail from './../utils/validateemail'
 
-import { useContactDispatch } from './../context/contact'
+import { useContactDispatch } from '@/context/contact'
 import { sendMessage } from '@/actions/contact'
 
 const Contact = () => {
