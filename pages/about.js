@@ -20,7 +20,7 @@ const Index = () => {
   useEffect(() => { getProfile(dispatchProfile) }, [dispatchProfile])
 
   return  <Fragment>
-    <Head title="Sten Olmre - About me"/>
+    <Head title="Sten Olmre - Software developer"/>
     <Navbar />
     <MobileNavbar />
     {
