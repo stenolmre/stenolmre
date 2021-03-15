@@ -24,7 +24,7 @@ const Sections = () => {
         tech={el.tech}
         images={<Fragment>
           {el.images.map(img => <img key={img} src={img} alt={img}/>)}
-        </Fragment>}/>)
+        </Fragment>}/>).slice(0, 2)
     }
   </Fragment>
 }

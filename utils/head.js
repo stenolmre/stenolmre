@@ -7,7 +7,7 @@ export default function MetaTags({ title, description, image, url }) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
     <meta name="description" content={description ? description : 'Eesmärgiks on alati olla rohkem, kui lihtsalt hea ning selle eesmärgi nimel olen valmis kõvasti tööd tegema, uusi teadmisi omandama ning neid oma töös rakendama.'}/>
     <meta name="image" content={image ? image : 'https://res.cloudinary.com/djz69vbsq/image/upload/v1615392398/stenolmre/image_hwkchn.jpg'}/>
-    <meta name="keywords" content="Hiking, Backpaking, Lapland, Bikepacking, Travelling"/>
+    <meta name="keywords" content="Software, Developer, Web, Website"/>
     <link rel="shortcut icon" type="image/x-icon" href="icon.png" />
     <meta property="og:title" content={title}/>
     <meta property="og:description" content={description ? description : 'Eesmärgiks on alati olla rohkem, kui lihtsalt hea ning selle eesmärgi nimel olen valmis kõvasti tööd tegema, uusi teadmisi omandama ning neid oma töös rakendama.'}/>
