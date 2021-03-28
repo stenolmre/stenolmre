@@ -11,41 +11,46 @@ const Contact = () => {
   const [data, setData] = useState({ email: '', message: '' })
   const { email, message } = data
   const [success, setSuccess] = useState(false)
-  const [error, setError] = useState({ error: true, email_msg: '', message_msg: '', overall_msg: '' })
+  const [errors, setErrors] = useState({})
   const [processing, setProcessing] = useState(false)
 
   const onChange = e => setData({ ...data, [e.target.name]: e.target.value })
+
+  const handleValidation = () => {
+    let formErrors = {}
+    let formIsValid = true
+
+    if (!validateEmail(data["email"])){
+      formIsValid = false
+      formErrors["email"] = "Korrektne email on kohustuslik."
+    }
+
+    if (!data["message"]){
+      formIsValid = false
+      formErrors["message"] = "Sõnumi väli on kohustuslik."
+    }
+
+    setErrors(formErrors)
+    return formIsValid
+  }
 
   const onSubmit = async e => {
     e.preventDefault()
     setProcessing(true)
 
-    if (!message && !validateEmail(email)) {
-      setError({ error: true, email_msg: 'Palun sisesta korrektne email.', message_msg: 'Sõnumi väli on kohustuslik.' })
+    if (handleValidation()) {
+      await sendMessage(dispatchContact, data, () => {
+        setSuccess(true)
+        setData({ email: '', message: '' })
+        setProcessing(false)
+
+        setTimeout(() => {
+          setSuccess(false)
+        }, 5000)
+      }, () => setProcessing(false))
+    } else {
       setProcessing(false)
-      return
     }
-
-    if (!validateEmail(email)) {
-      setError({ error: true, email_msg: 'Palun sisesta korrektne email.', message_msg: '', overall_msg: '' })
-      setProcessing(false)
-      return
-    }
-
-    if (!message) {
-      setError({ error: true, message_msg: 'Sõnumi väli on kohustuslik.' })
-      setProcessing(false)
-      return
-    }
-
-    await sendMessage(dispatchContact, data, () => setSuccess(true), () => setError({ error: false, email_msg: '', message_msg: '', overall_msg: '' }))
-
-    setProcessing(false)
-    setData({ email: '', message: '' })
-
-    setTimeout(() => {
-      setSuccess(false)
-    }, 5000)
   }
 
   return <div className="contact" id="contact">
@@ -60,10 +65,10 @@ const Contact = () => {
     <form onSubmit={onSubmit} autoComplete="off">
       <label>Email <span style={{ color: 'red' }}>*</span></label>
       <input name="email" value={data.email} onChange={onChange}/>
-      {error.error && <p className="contact_error_msg">{error.email_msg}</p>}
+      {errors["name"] && <p className="contact_error_msg">{errors["name"]}</p>}
       <label>Sõnum <span style={{ color: 'red' }}>*</span></label>
       <textarea name="message" value={data.message} onChange={onChange}/>
-      {error.error && <p className="contact_error_msg">{error.message_msg}</p>}
+      {errors["message"] && <p className="contact_error_msg">{errors["message"]}</p>}
       <button disabled={processing}>{processing ? 'Saadan..' : 'Saada'}</button>
       {success && <p style={{ color: 'green' }}>Teie sõnum on edukalt saadetud. Aitäh!</p>}
     </form>
