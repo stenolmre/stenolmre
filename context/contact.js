@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { ContactReducer, initialState } from './../reducers/contact'
+import { ContactReducer, initialState } from '@/reducers/contact'
 
 const ContactStateCtx = createContext();
 const ContactDispatchCtx = createContext();

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { PortfolioReducer, initialState } from './../reducers/portfolio'
+import { PortfolioReducer, initialState } from '@/reducers/portfolio'
 
 const PortfolioStateCtx = createContext();
 const PortfolioDispatchCtx = createContext();

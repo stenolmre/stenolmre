@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { ProfileReducer, initialState } from './../reducers/profile'
+import { ProfileReducer, initialState } from '@/reducers/profile'
 
 const ProfileStateCtx = createContext();
 const ProfileDispatchCtx = createContext();

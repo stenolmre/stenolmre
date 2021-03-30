@@ -5,7 +5,8 @@
       "@/components/*": ["components/*", "components/mobile/*"],
       "@/utils/*": ["utils/*"],
       "@/actions/*": ["actions/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/reducers/*": ["reducers/*"]
     }
   }
 }

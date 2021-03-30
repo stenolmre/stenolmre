@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Loader = () => {
-  return <svg width="32px" height="32px" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color="#000000">
+const Loader = ({ color }) => {
+  return <svg width="32px" height="32px" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg" fill="currentColor" color={color ? color : '#1c1c1c'}>
     <g transform="translate(1 1)" fillRule="evenodd">
       <circle cx="5" cy="50" r="5">
         <animate attributeName="cy" begin="0s" dur="2.2s" values="50;5;50;50" calcMode="linear" repeatCount="indefinite"></animate>

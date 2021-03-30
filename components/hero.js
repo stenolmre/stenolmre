@@ -1,30 +1,71 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
+import Cookies from 'js-cookie'
 
-import { useProfileState, useProfileDispatch } from '@/context/profile'
-import { getProfile } from '@/actions/profile'
+import { usePortfolioState, usePortfolioDispatch } from '@/context/portfolio'
+import { getPortfolio } from '@/actions/portfolio'
 
-import Navbar from './navbar'
+import Layout from '@/components/layout'
 import Loader from '@/utils/loader'
 
 const HeroSection = () => {
-  const { profile, loading } = useProfileState()
-  const dispatchProfile = useProfileDispatch()
+  const user_lang = Cookies.get('lang') === 'ENG'
 
-  useEffect(() => { getProfile(dispatchProfile) }, [dispatchProfile])
+  const { portfolio, loading } = usePortfolioState()
+  const dispatchPortfolio = usePortfolioDispatch()
 
-  return <div className="hero" id="about">
-    <Navbar />
-    <img className="profile_image" src="https://res.cloudinary.com/djz69vbsq/image/upload/ar_1:1,c_fill,g_auto,q_100,w_640/v1614861530/stenolmre/sten_olmre_profile_rq3uqc.jpg" alt="sten_olmre_profile" />
+  useEffect(() => { getPortfolio(dispatchPortfolio) }, [dispatchPortfolio])
+
+  const [startAnimation, setStartAnimation] = useState(false)
+
+  useEffect(() => {
+    !loading && setTimeout(() => {
+      setStartAnimation(true)
+    }, 50)
+  }, [loading])
+
+  const heroDiv = useRef(null)
+
+  const scrollDown = () => {
+    window.scroll({ top: heroDiv.current ? heroDiv.current.offsetHeight + 80 : 1, left: 0, behavior: 'smooth' })
+  }
+
+  return <Layout startAnimation={startAnimation}>
     {
-      loading ? <div className="main_loader"><Loader /></div> : profile && <Fragment>
-        <h1>{profile.name}</h1>
-        <p>{profile.qualification}</p>
-        <p>{profile.summary}</p>
-      </Fragment>
+      loading ? <div className="main_loader"><Loader color="var(--white)"/></div> : <div className="hero_container" ref={heroDiv}>
+        <div className="hero">
+          {
+            user_lang
+              ? <h1>Reach more customers<br/>with beautiful website.</h1>
+              : <h1>Ilus veebileht<br/>toob rohkem kliente.</h1>
+          }
+          <div className="hero_links">
+            <Link href="/#portfolio"><a className="hero_links_button">{user_lang ? 'Check out our work' : 'Vaata meie veebilehti'}</a></Link>
+            {
+              portfolio && portfolio.map(el => <a href={el.url} key={el._id}>{el.url.slice(8)}</a>).slice(0, 3)
+            }
+          </div>
+          <div className="hero_arrow" onClick={scrollDown}>
+            <i className="fas fa-arrow-down"/>
+          </div>
+        </div>
+      </div>
     }
-    <Link href="/#portfolio"><a id="portfolio" className="hero_call_to_action">Portfoolio</a></Link>
-  </div>
+    <style jsx>{`
+      .hero h1 {
+        margin: ${startAnimation ? '12vw 0 50px 10vw' : 'calc(12vw + 100px) 0 50px 10vw'};
+        opacity: ${startAnimation ? '1' : '0'};
+      }
+
+      .hero_links {
+        opacity: ${startAnimation ? '1' : '0'};
+      }
+
+      .hero_arrow {
+        bottom: ${startAnimation ? '2vw' : '-5vw'};
+      }
+    `}</style>
+  </Layout>
 }
 
 export default HeroSection

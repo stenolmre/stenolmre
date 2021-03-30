@@ -2,14 +2,14 @@ import React, { Fragment } from 'react'
 import Head from '@/utils/head'
 
 import Layout from '@/components/layout'
-import About from '@/components/about'
+import Portfolio from '@/components/portfolio'
 import Footer from '@/components/footer'
 
 const Index = () => {
   return  <Fragment>
-    <Head title="Sten Olmre - Software developer" url="about"/>
+    <Head title="Sten Olmre - Software developer" url="portfolio"/>
     <Layout>
-      <About aboutPage />
+      <Portfolio portfolioPage />
       <Footer />
     </Layout>
   </Fragment>
