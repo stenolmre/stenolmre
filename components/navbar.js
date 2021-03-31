@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
@@ -6,11 +6,15 @@ import Cookies from 'js-cookie'
 const Navbar = ({ startAnimation = true }) => {
   const router = useRouter()
 
-  const [language, setLanguage] = useState(Cookies.get('lang') ? Cookies.get('lang') : 'ENG')
+  const [language, setLanguage] = useState('')
   const languages = ['ENG', 'EST']
   const user_lang = language === 'ENG'
 
   const [showMenu, setShowMenu] = useState(false)
+
+  useEffect(() => {
+    setLanguage(Cookies.get('lang') ? Cookies.get('lang') : 'ENG')
+  }, [])
 
   return <nav>
     <div className="logo">
