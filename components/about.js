@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Cookies from 'js-cookie'
 
+import isElementOutViewport from '@/utils/isElementOutViewport'
+
 import { useProfileState, useProfileDispatch } from '@/context/profile'
 import { getProfile } from '@/actions/profile'
 
@@ -18,15 +20,7 @@ const About = ({ aboutPage }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const isElementOutViewport = () => {
-      const rect = aboutSection.current && aboutSection.current.getBoundingClientRect()
-
-      if (!isVisible && rect && rect.top < window.innerHeight) {
-        setIsVisible(true)
-      }
-    }
-
-    window.addEventListener('scroll', isElementOutViewport)
+    window.addEventListener('scroll', () => isElementOutViewport(aboutSection.current, isVisible,  setIsVisible))
     return () => window.removeEventListener('scroll', isElementOutViewport, true)
   }, [aboutSection.current, isVisible])
 

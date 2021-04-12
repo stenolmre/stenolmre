@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Cookies from 'js-cookie'
 
+import isElementOutViewport from '@/utils/isElementOutViewport'
 import validateEmail from '@/utils/validateemail'
 import validateForm from '@/utils/validateform'
 
@@ -32,9 +33,7 @@ const Contact = ({ contactPage }) => {
         setData({ name: '', email: '', message: '' })
         setProcessing(false)
 
-        setTimeout(() => {
-          setSuccess(false)
-        }, 5000)
+        setTimeout(() => { setSuccess(false) }, 5000)
       }, () => setProcessing(false))
     } else {
       setProcessing(false)
@@ -45,15 +44,7 @@ const Contact = ({ contactPage }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const isElementOutViewport = () => {
-      const rect = contactSection.current && contactSection.current.getBoundingClientRect()
-
-      if (!isVisible && rect && rect.top < window.innerHeight) {
-        setIsVisible(true)
-      }
-    }
-
-    window.addEventListener('scroll', isElementOutViewport)
+    window.addEventListener('scroll', () => isElementOutViewport(contactSection.current, isVisible, setIsVisible))
     return () => window.removeEventListener('scroll', isElementOutViewport, true)
   }, [contactSection.current, isVisible])
 

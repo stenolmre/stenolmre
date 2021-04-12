@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 
+import isElementOutViewport from '@/utils/isElementOutViewport'
+
 import { usePortfolioState, usePortfolioDispatch } from '@/context/portfolio'
 import { getPortfolio } from '@/actions/portfolio'
 
@@ -18,15 +20,7 @@ const Portfolio = ({ portfolioPage }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const isElementOutViewport = () => {
-      const rect = portfolioSection.current && portfolioSection.current.getBoundingClientRect()
-
-      if (!isVisible && rect && rect.top < window.innerHeight) {
-        setIsVisible(true)
-      }
-    }
-
-    window.addEventListener('scroll', isElementOutViewport)
+    window.addEventListener('scroll', () => isElementOutViewport(portfolioSection.current, isVisible, setIsVisible))
     return () => window.removeEventListener('scroll', isElementOutViewport, true)
   }, [portfolioSection.current, isVisible])
 

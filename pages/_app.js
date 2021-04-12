@@ -8,7 +8,7 @@ import './../css/styles.css'
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
-    !Cookies.get('lang') && Cookies.set('lang', 'eng')
+    !Cookies.get('lang') && Cookies.set('lang', 'ENG')
   }, [])
 
   return <GlobalState>
