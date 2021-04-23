@@ -13,7 +13,7 @@ const Navbar = ({ startAnimation = true }) => {
   const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
-    setLanguage(Cookies.get('lang') ? Cookies.get('lang') : 'ENG')
+    setLanguage(Cookies.get('ui_language') ? Cookies.get('ui_language') : 'ENG')
   }, [])
 
   return <nav>
@@ -34,7 +34,7 @@ const Navbar = ({ startAnimation = true }) => {
         <div className="navs_sub">
           {
             languages.filter(x => x !== language).map(el => <p key={el} onClick={() => {
-              Cookies.set('lang', el)
+              Cookies.set('ui_language', el)
               router.reload()
             }}>{el}</p>)
           }
@@ -44,7 +44,7 @@ const Navbar = ({ startAnimation = true }) => {
     <div className="navbar_social_links">
       {
         languages.map(el => <p key={el} onClick={() => {
-          Cookies.set('lang', el)
+          Cookies.set('ui_language', el)
           router.reload()
         }} style={ language === el ? { color: 'var(--white)' } : { color: 'var(--gray)' } }>{el}</p>)
       }

@@ -2,11 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*", "components/mobile/*"],
-      "@/utils/*": ["utils/*"],
+      "@/components/*": ["components/*"],
       "@/actions/*": ["actions/*"],
       "@/context/*": ["context/*"],
-      "@/reducers/*": ["reducers/*"]
+      "@/hooks/*": ["hooks/*"],
+      "@/reducers/*": ["reducers/*"],
+      "@/utils/*": ["utils/*"],
+      "@/validations/*": ["validations/*"]
     }
   }
 }

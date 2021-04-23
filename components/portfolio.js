@@ -1,38 +1,40 @@
-import React, { useRef, useEffect, useState } from 'react'
-import Cookies from 'js-cookie'
+import React, { useRef } from 'react'
 
-import isElementOutViewport from '@/utils/isElementOutViewport'
+import useElementInViewport from '@/hooks/useElementInViewport'
+import usePortfolio from '@/hooks/usePortfolio'
 
-import { usePortfolioState, usePortfolioDispatch } from '@/context/portfolio'
-import { getPortfolio } from '@/actions/portfolio'
+import Headline from '@/components/utils/headline'
 
-import Headline from '@/utils/headline'
-
-const Portfolio = ({ portfolioPage }) => {
-  const user_lang = Cookies.get('lang') === 'ENG'
-
-  const { portfolio, loading } = usePortfolioState()
-  const dispatchPortfolio = usePortfolioDispatch()
-
-  useEffect(() => { getPortfolio(dispatchPortfolio) }, [dispatchPortfolio])
+const Portfolio = ({ portfolioPage, isLanguageEnglish }) => {
+  const { portfolio, loading } = usePortfolio()
 
   const portfolioSection = useRef(null)
-  const [isVisible, setIsVisible] = useState(false)
+  const isVisible = useElementInViewport(portfolioSection)
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => isElementOutViewport(portfolioSection.current, isVisible, setIsVisible))
-    return () => window.removeEventListener('scroll', isElementOutViewport, true)
-  }, [portfolioSection.current, isVisible])
+  const setClassName = (index) => {
+    if ((index + 1) % 3 === 0) return 'portfolio portfolio_three'
+    if ((index + 1) % 3 === 2) return 'portfolio portfolio_two'
+    if ((index + 1) % 3 === 1) return 'portfolio portfolio_one'
+  }
 
   return <div className="portfolio_container" id="portfolio" ref={portfolioSection}>
-    <Headline language={user_lang} isVisible={isVisible} contactPage={portfolioPage} subtitle={user_lang ? 'our portfolio' : 'portfoolio'} upperLineName={user_lang ? 'Happy clients.' : 'Õnnelikud kliendid.'} headlineSpan={user_lang ? 'designs' : 'disainid'} lowerLineName={user_lang ? 'Beautiful' : 'Suurepärased'}/>
+    <Headline
+      isVisible={isVisible}
+      page={portfolioPage}
+      subtitle={isLanguageEnglish ? 'our portfolio' : 'portfoolio'}
+      upperLineName={isLanguageEnglish ? 'Happy clients.' : 'Õnnelikud kliendid.'}
+      headlineSpan={isLanguageEnglish ? 'designs' : 'disainid'}
+      lowerLineName={isLanguageEnglish ? 'Beautiful' : 'Suurepärased'}
+    />
     <div className="portfolios">
       {
-        portfolio && portfolio.map((el, i) => <a key={el._id} className={i === 0 ? 'portfolio portfolio_one' : i === 1 ? 'portfolio portfolio_two' : 'portfolio portfolio_three'} style={{ backgroundImage: `url(${el.image})` }} href={el.url} target="noreferrer" rel="_blank">
-          <div className="portfolio_overlay"/>
-          <h2>{el.name}</h2>
-          <p className={i % 2 ? 'portfolio_arrow_right' : ''}>{user_lang ? 'Deep dive' : 'Vaata lähemalt'} <i className="fas fa-arrow-right"/></p>
-        </a>)
+        portfolio && portfolio.map((el, i) => {
+          return <a key={el._id} className={setClassName(i)} style={{ backgroundImage: `url(${el.image})` }} href={el.url} target="noreferrer" rel="_blank">
+            <div className="portfolio_overlay"/>
+            <h2>{el.name}</h2>
+            <p className={i % 2 ? 'portfolio_arrow_right' : ''}>{isLanguageEnglish ? 'Deep dive' : 'Vaata lähemalt'} <i className="fas fa-arrow-right"/></p>
+          </a>
+        })
       }
     </div>
   </div>

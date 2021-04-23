@@ -1,20 +1,20 @@
-import validateEmail from '@/utils/validateemail'
+import validateEmail from '@/validations/email'
 
-const validateForm = (data, setErrors, language) => {
+const validateContact = (contact, setErrors, language) => {
   let formErrors = {}
   let formIsValid = true
 
-  if (!data["name"]){
+  if (!contact["name"]){
     formIsValid = false
     formErrors["name"] = language ? 'Name is required.' : 'Nimi on kohustuslik.'
   }
 
-  if (!validateEmail(data["email"])){
+  if (!validateEmail(contact["email"])){
     formIsValid = false
-    formErrors["email"] = language ? 'Correct email is required.' : 'Korrktne email on kohustuslik.'
+    formErrors["email"] = language ? 'Correct email is required.' : 'Korrektne email on kohustuslik.'
   }
 
-  if (!data["message"]){
+  if (!contact["message"]){
     formIsValid = false
     formErrors["message"] = language ? 'Message is required.' : 'Sõnumi väli on kohustuslik.'
   }
@@ -23,4 +23,4 @@ const validateForm = (data, setErrors, language) => {
   return formIsValid
 }
 
-export default validateForm
+export default validateContact
