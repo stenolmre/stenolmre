@@ -334,8 +334,7 @@ nav section .navbar_button:hover {
   }
 
   .hero_links .hero_links_button {
-    width: 200px;
-    display: block;
+    display: inline-block;
   }
 
   .hero_links .hero_links_button:hover {
