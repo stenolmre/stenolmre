@@ -8,7 +8,7 @@ export default function MetaTags({ title, description, image, url }) {
     <meta name="description" content={description ? description : 'Our mission is to empower every person and every organisation on the planet to achieve more. We strive to build beautiful websites and help owners to reach more customers through it. Our strategy is to build easy-to-use customer based sites with modern and eye-catching design.'}/>
     <meta name="image" content={image ? image : 'https://res.cloudinary.com/djz69vbsq/image/upload/v1615392398/stenolmre/image_hwkchn.jpg'}/>
     <meta name="keywords" content="Software, Developer, Web, Website"/>
-    <link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/djz69vbsq/image/upload/v1622384887/stenolmre/stenolmre_logo_gye6rf.png" />
     <meta property="og:title" content={title}/>
     <meta property="og:description" content={description ? description : 'Our mission is to empower every person and every organisation on the planet to achieve more. We strive to build beautiful websites and help owners to reach more customers through it. Our strategy is to build easy-to-use customer based sites with modern and eye-catching design.'}/>
     <meta property="og:image" content={image ? image : 'https://res.cloudinary.com/djz69vbsq/image/upload/v1615392398/stenolmre/image_hwkchn.jpg'}/>
